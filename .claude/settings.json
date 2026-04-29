@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "timeout": 30,
+            "statusMessage": "Pushing to GitHub...",
+            "command": "INPUT=$(cat); FILE=$(node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const p=JSON.parse(d);console.log(p.tool_input&&p.tool_input.file_path||'');})\" <<< \"$INPUT\"); if [[ \"$FILE\" == *\"MeuPortifolio\"* ]]; then cd \"c:/Gustavo_Betone/MeuPortifolio\" && git add -A && git diff --cached --quiet || git commit -m \"update: $(basename \\\"$FILE\\\")\" && git push origin main; fi 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
