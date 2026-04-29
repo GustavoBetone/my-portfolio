@@ -7,13 +7,13 @@
   <meta name="description" content="Fullstack developer specializing in Angular, Node.js, and scalable e-commerce solutions. Available for new projects." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; cursor: none; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background: #F7F8FA;
       color: #0D1117;
       line-height: 1.6;
@@ -21,33 +21,6 @@
     }
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
-
-    /* ── Custom Cursor ── */
-    #cursor-dot {
-      width: 8px; height: 8px;
-      background: #1C6FEB;
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-    }
-    #cursor-ring {
-      width: 36px; height: 36px;
-      border: 2px solid rgba(28, 111, 235, 0.45);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, border-color 0.2s;
-    }
-    #cursor-ring.hovered {
-      width: 52px; height: 52px;
-      border-color: rgba(28, 111, 235, 0.7);
-    }
 
     /* ── Tokens ── */
     :root {
@@ -85,7 +58,7 @@
       gap: 32px;
     }
     .nav-logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 1.2rem;
       color: var(--text);
@@ -137,11 +110,11 @@
       font-size: .8rem;
       font-weight: 600;
       color: var(--muted);
-      cursor: none;
+
       padding: 2px 4px;
       border-radius: 4px;
       transition: color .2s, background .2s;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       letter-spacing: .04em;
     }
     .lang-btn:hover { color: var(--text); }
@@ -151,7 +124,7 @@
     }
 
     .btn-ghost {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .8125rem;
       font-weight: 500;
       padding: 8px 16px;
@@ -159,7 +132,7 @@
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text);
-      cursor: none;
+
       transition: border-color .2s, background .2s;
       display: inline-flex;
       align-items: center;
@@ -167,7 +140,7 @@
     }
     .btn-ghost:hover { border-color: var(--blue); background: var(--blue-light); }
     .btn-primary {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .8125rem;
       font-weight: 600;
       padding: 8px 18px;
@@ -175,7 +148,7 @@
       border: none;
       background: var(--blue);
       color: #fff;
-      cursor: none;
+
       transition: background .2s, transform .15s, box-shadow .2s;
       display: inline-flex;
       align-items: center;
@@ -209,7 +182,7 @@
       border-radius: 2px;
     }
     h2.section-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(2rem, 4vw, 2.75rem);
       font-weight: 700;
       letter-spacing: -0.03em;
@@ -286,7 +259,7 @@
       50% { opacity: .55; transform: scale(1.35); }
     }
     h1.hero-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(2.8rem, 5.5vw, 4.25rem);
       font-weight: 800;
       letter-spacing: -0.04em;
@@ -314,7 +287,7 @@
       border-radius: 10px !important;
     }
     .btn-outline-lg {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .9375rem;
       font-weight: 500;
       padding: 13px 28px;
@@ -322,7 +295,7 @@
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text);
-      cursor: none;
+
       transition: border-color .2s, background .2s;
       display: inline-flex;
       align-items: center;
@@ -340,7 +313,7 @@
       gap: 2px;
     }
     .hero-stat-value {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.375rem;
       font-weight: 700;
       color: var(--text);
@@ -419,14 +392,14 @@
       width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
     }
     .hero-card-avatar-fallback {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
       font-size: .875rem;
       color: var(--blue);
     }
     .hero-card-info { flex: 1; min-width: 0; }
     .hero-card-name {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
       font-size: .875rem;
       color: var(--text);
@@ -476,7 +449,7 @@
     }
     .skill-icon svg { width: 22px; height: 22px; }
     .skill-name {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.0625rem;
       font-weight: 700;
       color: var(--text);
@@ -550,7 +523,7 @@
       justify-content: center;
     }
     .project-img-placeholder span {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 2rem;
       font-weight: 800;
       color: rgba(28,111,235,.28);
@@ -571,7 +544,7 @@
       margin-bottom: 8px;
     }
     .project-name {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.1875rem;
       font-weight: 700;
       color: var(--text);
@@ -632,7 +605,7 @@
       flex-wrap: wrap;
     }
     .btn-white {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .9375rem;
       font-weight: 600;
       padding: 13px 26px;
@@ -640,7 +613,7 @@
       border: none;
       background: #fff;
       color: var(--blue);
-      cursor: none;
+
       transition: transform .15s, box-shadow .2s;
       display: inline-flex;
       align-items: center;
@@ -651,7 +624,7 @@
       box-shadow: 0 8px 28px rgba(0,0,0,.18);
     }
     .btn-white-outline {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .9375rem;
       font-weight: 500;
       padding: 13px 26px;
@@ -659,7 +632,7 @@
       border: 1.5px solid rgba(255,255,255,.4);
       background: transparent;
       color: #fff;
-      cursor: none;
+
       transition: border-color .2s, background .2s;
       display: inline-flex;
       align-items: center;
@@ -685,7 +658,7 @@
       gap: 20px;
     }
     .footer-logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 1.1rem;
       color: #fff;
@@ -746,10 +719,6 @@
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
-
   <!-- ── Nav ── -->
   <nav>
     <div class="nav-inner">
@@ -807,7 +776,7 @@
             </div>
             <div class="hero-stat-divider"></div>
             <div class="hero-stat">
-              <span class="hero-stat-value">$35<small style="font-family:'DM Sans';font-size:.7em;font-weight:400">/hr</small></span>
+              <span class="hero-stat-value">$35<small style="font-family:'Plus Jakarta Sans';font-size:.7em;font-weight:400">/hr</small></span>
               <span class="hero-stat-label" data-en="on Upwork" data-pt="no Upwork">on Upwork</span>
             </div>
           </div>
@@ -1093,31 +1062,6 @@
       document.documentElement.lang = lang;
       localStorage.setItem('lang', lang);
     }
-
-    // ── Custom Cursor ──
-    const dot  = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    let mx = -100, my = -100, rx = -100, ry = -100;
-
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-      dot.style.left = mx + 'px';
-      dot.style.top  = my + 'px';
-    });
-
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
-    });
-
-    (function animateRing() {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
-      requestAnimationFrame(animateRing);
-    })();
 
     // ── Fade-in on scroll ──
     const observer = new IntersectionObserver(entries => {
