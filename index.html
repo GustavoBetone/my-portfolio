@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gustavo Betone , Fullstack Developer</title>
   <meta name="description" content="Fullstack developer specializing in Angular, Node.js, and scalable e-commerce solutions. Available for new projects." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gustavo-betone-dev.vercel.app/" />
+  <meta property="og:title" content="Gustavo Betone , Fullstack Developer" />
+  <meta property="og:description" content="Fullstack developer specializing in Angular, Node.js, and scalable e-commerce solutions. Available for new projects." />
+  <meta property="og:image" content="https://gustavo-betone-dev.vercel.app/assets/img/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gustavo Betone , Fullstack Developer" />
+  <meta name="twitter:description" content="Fullstack developer specializing in Angular, Node.js, and scalable e-commerce solutions. Available for new projects." />
+  <meta name="twitter:image" content="https://gustavo-betone-dev.vercel.app/assets/img/og-cover.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -302,6 +316,18 @@
       gap: 6px;
     }
     .btn-outline-lg:hover { border-color: var(--blue); background: var(--blue-light); }
+    .hero-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 13px 6px;
+      transition: color .2s, gap .2s;
+    }
+    .hero-cta-secondary svg { color: #25D366; flex-shrink: 0; }
+    .hero-cta-secondary:hover { color: var(--text); gap: 10px; }
     .hero-stats {
       display: flex;
       gap: 32px;
@@ -465,6 +491,15 @@
       border: 1px solid var(--border);
       padding: 4px 10px;
       border-radius: 6px;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .skill-card:hover .skill-tag {
+      border-color: rgba(28,111,235,.2);
+    }
+    .skill-tag:hover {
+      color: var(--blue);
+      border-color: rgba(28,111,235,.4);
+      background: var(--blue-light);
     }
 
     /* ── Projects ── */
@@ -571,6 +606,10 @@
       background: var(--blue-light);
       padding: 3px 9px;
       border-radius: 5px;
+      transition: background .2s, transform .2s;
+    }
+    .project-card:hover .project-tag {
+      background: rgba(28,111,235,.14);
     }
     .project-link {
       display: inline-flex;
@@ -643,6 +682,34 @@
       border-color: #fff;
       background: rgba(255,255,255,.1);
     }
+
+    /* ── Floating WhatsApp CTA ── */
+    .whatsapp-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 90;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 13px 20px 13px 16px;
+      border-radius: 100px;
+      box-shadow: var(--shadow-md);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: .875rem;
+      font-weight: 600;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .whatsapp-float svg { color: #25D366; flex-shrink: 0; }
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-blue);
+      border-color: rgba(28,111,235,.35);
+    }
+    .whatsapp-float-text { white-space: nowrap; }
 
     /* ── Footer ── */
     footer {
@@ -717,6 +784,14 @@
       .nav-actions .btn-ghost { display: none; }
       .hero-photo-wrap { width: 200px; }
       .lang-toggle { margin-right: 0; }
+      .whatsapp-float { right: 16px; bottom: 16px; }
+    }
+    @media (max-width: 380px) {
+      .whatsapp-float {
+        padding: 14px;
+        border-radius: 50%;
+      }
+      .whatsapp-float-text { display: none; }
     }
   </style>
 </head>
@@ -766,6 +841,10 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a class="btn-outline-lg" href="#work" data-en="See my work" data-pt="Ver projetos">See my work</a>
+            <a class="hero-cta-secondary" href="https://wa.me/5511934221504" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              <span data-en="Message me on WhatsApp" data-pt="Me chama no WhatsApp">Message me on WhatsApp</span>
+            </a>
           </div>
           <div class="hero-stats">
             <div class="hero-stat">
@@ -891,11 +970,11 @@
           </div>
           <div class="skill-name" data-en="AI &amp; Vibe Coding" data-pt="AI &amp; Vibe Coding">AI &amp; Vibe Coding</div>
           <div class="skill-tags">
-            <span class="skill-tag">Vibe Coding</span>
+            <span class="skill-tag">Claude Code</span>
             <span class="skill-tag">Prompt Engineering</span>
-            <span class="skill-tag">AI Art</span>
-            <span class="skill-tag">Claude</span>
-            <span class="skill-tag">Cursor</span>
+            <span class="skill-tag">MCP</span>
+            <span class="skill-tag" data-en="Automated Deploy (Vercel + GitHub)" data-pt="Deploy Automatizado (Vercel + GitHub)">Automated Deploy (Vercel + GitHub)</span>
+            <span class="skill-tag" data-en="AI Image &amp; Video Gen" data-pt="Geração de Imagem &amp; Vídeo com IA">AI Image &amp; Video Gen</span>
           </div>
         </div>
 
@@ -927,8 +1006,30 @@
       </div>
       <div class="projects-grid">
 
-        <!-- Dom Perfumes -->
+        <!-- GiGi Variedades -->
         <div class="project-card fade-in">
+          <div class="project-img-wrap">
+            <img src="assets/img/projects/gigivariedades.png" alt="GiGi Variedades" class="project-img" onerror="this.parentNode.innerHTML='<div class=\'project-img-placeholder\'><span>GIGI</span></div>'" />
+          </div>
+          <div class="project-body">
+            <div class="project-type" data-en="Landing Page &amp; Conversion" data-pt="Landing Page &amp; Conversão">Landing Page &amp; Conversion</div>
+            <div class="project-name">GiGi Variedades</div>
+            <p class="project-desc" data-en="High-conversion landing page for a wholesale vertical launch, WhatsApp-first funnel, AI-generated hero video, mobile-first performance." data-pt="Landing page de alta conversão pra abertura de vertente de atacado, com funil direto pro WhatsApp, vídeo hero gerado com IA e performance mobile-first.">High-conversion landing page for a wholesale vertical launch, WhatsApp-first funnel, AI-generated hero video, mobile-first performance.</p>
+            <div class="project-stack">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">Three.js</span>
+              <span class="project-tag">Framer Motion</span>
+              <span class="project-tag">Vercel</span>
+            </div>
+            <a class="project-link" href="https://gi-gi-variedades.vercel.app/" target="_blank" rel="noopener">
+              <span data-en="Visit site" data-pt="Ver site">Visit site</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dom Perfumes -->
+        <div class="project-card fade-in" style="transition-delay:.08s">
           <div class="project-img-wrap">
             <img src="assets/img/projects/dom.png" alt="Dom Perfumes" class="project-img" onerror="this.parentNode.innerHTML='<div class=\'project-img-placeholder\'><span>DOM</span></div>'" />
           </div>
@@ -950,7 +1051,7 @@
         </div>
 
         <!-- Korza -->
-        <div class="project-card fade-in" style="transition-delay:.08s">
+        <div class="project-card fade-in" style="transition-delay:.16s">
           <div class="project-img-wrap">
             <img src="assets/img/projects/korza.png" alt="Korza" class="project-img" onerror="this.parentNode.innerHTML='<div class=\'project-img-placeholder\'><span>KORZA</span></div>'" />
           </div>
@@ -972,7 +1073,7 @@
         </div>
 
         <!-- Appza -->
-        <div class="project-card fade-in" style="transition-delay:.16s">
+        <div class="project-card fade-in" style="transition-delay:.24s">
           <div class="project-img-wrap">
             <img src="assets/img/projects/appza.png" alt="Appza" class="project-img" onerror="this.parentNode.innerHTML='<div class=\'project-img-placeholder\'><span>APPZA</span></div>'" />
           </div>
@@ -994,7 +1095,7 @@
         </div>
 
         <!-- n8n Workflows -->
-        <div class="project-card fade-in" style="transition-delay:.24s">
+        <div class="project-card fade-in" style="transition-delay:.32s">
           <div class="project-img-wrap">
             <img src="assets/img/projects/n8n.png" alt="n8n Workflows" class="project-img" onerror="this.parentNode.innerHTML='<div class=\'project-img-placeholder\'><span>n8n</span></div>'" />
           </div>
@@ -1016,7 +1117,7 @@
         </div>
 
         <!-- Itaú , span 2 columns -->
-        <div class="project-card span-2 fade-in" style="transition-delay:.32s">
+        <div class="project-card span-2 fade-in" style="transition-delay:.40s">
           <div class="project-img-wrap">
             <img src="assets/img/projects/itau.png" alt="Itaú Unibanco" class="project-img" onerror="this.parentNode.innerHTML='<div class=\'project-img-placeholder\' style=\'min-height:260px\'><span>ITAÚ</span></div>'" />
           </div>
@@ -1081,6 +1182,12 @@
       </ul>
     </div>
   </footer>
+
+  <!-- ── Floating WhatsApp CTA ── -->
+  <a class="whatsapp-float" href="https://wa.me/5511934221504" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    <span class="whatsapp-float-text" data-en="Message me on WhatsApp" data-pt="Me chama no WhatsApp">Message me on WhatsApp</span>
+  </a>
 
   <script>
     // ── Lang Toggle ──
