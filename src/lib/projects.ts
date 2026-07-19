@@ -1,8 +1,8 @@
 export type Project = {
   slug: string;
   image: string | null;
+  imageFit: "cover" | "contain";
   placeholderLabel: string;
-  span2?: boolean;
   type: { en: string; pt: string };
   name: string;
   desc: { en: string; pt: string };
@@ -16,6 +16,7 @@ export const projects: Project[] = [
   {
     slug: "gigi",
     image: "/assets/img/projects/gigivariedades.png",
+    imageFit: "cover",
     placeholderLabel: "GIGI",
     type: { en: "Landing Page & Conversion", pt: "Landing Page & Conversão" },
     name: "GiGi Variedades",
@@ -28,7 +29,8 @@ export const projects: Project[] = [
   },
   {
     slug: "silcore",
-    image: null,
+    image: "/assets/img/projects/silcore.png",
+    imageFit: "cover",
     placeholderLabel: "SILCORE",
     type: { en: "E-commerce & D2C Brand", pt: "E-commerce & Marca D2C" },
     name: "Silcore",
@@ -49,6 +51,7 @@ export const projects: Project[] = [
   {
     slug: "dom",
     image: "/assets/img/projects/dom.png",
+    imageFit: "cover",
     placeholderLabel: "DOM",
     type: { en: "E-commerce & Analytics", pt: "E-commerce & Analytics" },
     name: "Dom Perfumes",
@@ -62,6 +65,7 @@ export const projects: Project[] = [
   {
     slug: "korza",
     image: "/assets/img/projects/korza.png",
+    imageFit: "contain",
     placeholderLabel: "KORZA",
     type: { en: "SaaS & Institutional", pt: "SaaS & Institucional" },
     name: "Korza",
@@ -75,6 +79,7 @@ export const projects: Project[] = [
   {
     slug: "appza",
     image: "/assets/img/projects/appza.png",
+    imageFit: "cover",
     placeholderLabel: "APPZA",
     type: { en: "SaaS & Mobile", pt: "SaaS & Mobile" },
     name: "Appza",
@@ -88,6 +93,7 @@ export const projects: Project[] = [
   {
     slug: "n8n",
     image: "/assets/img/projects/n8n.png",
+    imageFit: "cover",
     placeholderLabel: "n8n",
     type: { en: "Automation", pt: "Automação" },
     name: "n8n Workflows",
@@ -99,28 +105,6 @@ export const projects: Project[] = [
     link: {
       kind: "confidential",
       label: { en: "Internal project", pt: "Projeto interno" },
-    },
-  },
-  {
-    slug: "itau",
-    image: "/assets/img/projects/itau.png",
-    placeholderLabel: "ITAÚ",
-    span2: true,
-    type: { en: "Enterprise & Infrastructure", pt: "Enterprise & Infraestrutura" },
-    name: "Itaú Unibanco",
-    desc: {
-      en: "Mission-critical ATM infrastructure for one of Latin America's largest banks. Developed high-availability software ensuring 99.9% uptime across thousands of terminals nationwide, strict security protocols, real-time monitoring, and C#/.NET backend services handling millions of daily transactions.",
-      pt: "Infraestrutura crítica de ATMs para um dos maiores bancos da América Latina. Desenvolvi software de alta disponibilidade garantindo 99,9% de uptime em milhares de terminais pelo país, protocolos rigorosos de segurança, monitoramento em tempo real e serviços C#/.NET processando milhões de transações diárias.",
-    },
-    stack: [
-      "C#",
-      ".NET",
-      "Angular",
-      { en: "High Availability", pt: "Alta Disponibilidade" },
-    ],
-    link: {
-      kind: "confidential",
-      label: { en: "Confidential, under NDA", pt: "Confidencial, sob NDA" },
     },
   },
 ];

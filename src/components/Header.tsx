@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/language-context";
 import { LINKS } from "@/lib/config";
 
-const NAV_IDS = ["skills", "work", "contact"] as const;
+const NAV_IDS = ["skills", "experience", "work", "contact"] as const;
 
 export function Header() {
   const { lang, setLang, t } = useLanguage();
@@ -37,6 +37,14 @@ export function Header() {
               className={`text-sm font-medium transition-colors ${active === "skills" ? "text-accent-cyan" : "text-muted hover:text-foreground"}`}
             >
               {t.nav.skills}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#experience"
+              className={`text-sm font-medium transition-colors ${active === "experience" ? "text-accent-cyan" : "text-muted hover:text-foreground"}`}
+            >
+              {t.nav.experience}
             </a>
           </li>
           <li>

@@ -2,7 +2,13 @@ export type Lang = "en" | "pt";
 
 export const translations = {
   en: {
-    nav: { skills: "Skills", work: "Work", contact: "Contact", hire: "Hire me on Upwork" },
+    nav: {
+      skills: "Skills",
+      experience: "Experience",
+      work: "Work",
+      contact: "Contact",
+      hire: "Hire me on Upwork",
+    },
     hero: {
       badge: "Available for new projects",
       titleLines: ["Fullstack dev", "that ships."],
@@ -22,6 +28,11 @@ export const translations = {
       title: "What I bring to your project",
       sub: "End-to-end engineering across frontend, backend, e-commerce, and cloud infrastructure.",
     },
+    experience: {
+      label: "Experience",
+      title: "Professional experience",
+      sub: "Enterprise-grade engineering work, delivered under NDA and long-term commitments.",
+    },
     projects: {
       label: "Portfolio",
       title: "Selected projects",
@@ -39,7 +50,13 @@ export const translations = {
     },
   },
   pt: {
-    nav: { skills: "Skills", work: "Projetos", contact: "Contato", hire: "Me contrate no Upwork" },
+    nav: {
+      skills: "Skills",
+      experience: "Experiência",
+      work: "Projetos",
+      contact: "Contato",
+      hire: "Me contrate no Upwork",
+    },
     hero: {
       badge: "Disponível para novos projetos",
       titleLines: ["Dev fullstack", "que entrega."],
@@ -58,6 +75,11 @@ export const translations = {
       label: "Especialidades",
       title: "O que levo ao seu projeto",
       sub: "Engenharia completa em frontend, backend, e-commerce e infraestrutura cloud.",
+    },
+    experience: {
+      label: "Experiência",
+      title: "Experiência profissional",
+      sub: "Trabalho de engenharia em ambiente enterprise, entregue sob NDA e compromissos de longo prazo.",
     },
     projects: {
       label: "Portfólio",

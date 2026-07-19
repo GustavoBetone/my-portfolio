@@ -41,29 +41,29 @@ export function ProjectCard({ project, delay = 0 }: { project: Project; delay?: 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
-      className={`hud-corners group relative bg-surface border border-border-soft rounded-2xl overflow-hidden flex flex-col transition-[border-color,box-shadow] duration-300 hover:border-accent-cyan/40 hover:glow-cyan ${
-        project.span2 ? "sm:col-span-2 sm:flex-row" : ""
-      }`}
+      className="hud-corners group relative bg-surface border border-border-soft rounded-2xl overflow-hidden flex flex-col transition-[border-color,box-shadow] duration-300 hover:border-accent-cyan/40 hover:glow-cyan"
     >
       <HudCorners />
       <div
-        className={`flex items-center justify-center bg-background shrink-0 overflow-hidden ${
-          project.span2 ? "sm:w-[44%] min-h-[220px] sm:min-h-[260px]" : "h-[220px]"
+        className={`relative h-[220px] shrink-0 overflow-hidden ${
+          project.image && project.imageFit === "contain" ? "bg-white" : "bg-background"
         }`}
       >
         {project.image ? (
-          <div className="relative w-full h-full">
-            <Image
-              src={project.image}
-              alt={project.name}
-              fill
-              className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-          </div>
+          <Image
+            src={project.image}
+            alt={project.name}
+            fill
+            className={`transition-transform duration-500 group-hover:scale-[1.03] ${
+              project.imageFit === "contain" ? "object-contain p-6" : "object-cover object-top"
+            }`}
+          />
         ) : (
-          <span className="font-display text-3xl font-extrabold tracking-wide text-accent-cyan/25">
-            {project.placeholderLabel}
-          </span>
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="font-display text-3xl font-extrabold tracking-wide text-accent-cyan/25">
+              {project.placeholderLabel}
+            </span>
+          </div>
         )}
       </div>
 
