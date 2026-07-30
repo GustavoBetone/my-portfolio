@@ -23,8 +23,6 @@ export function KineticHeadline({ lines }: { lines: string[] }) {
   return (
     <motion.h1
       variants={container}
-      initial="hidden"
-      animate="visible"
       className="font-display text-[clamp(2.8rem,5.5vw,4.25rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-foreground mb-5"
     >
       {lines.map((line, lineIdx) => (
@@ -35,7 +33,7 @@ export function KineticHeadline({ lines }: { lines: string[] }) {
               variants={word}
               className={`inline-block mr-[0.28em] ${
                 lineIdx === lines.length - 1 && i === line.split(" ").length - 1
-                  ? "bg-gradient-to-r from-accent-cyan to-accent-blue bg-clip-text text-transparent"
+                  ? "text-signal-text"
                   : ""
               }`}
             >

@@ -14,9 +14,9 @@ export const LINKS = {
 };
 
 export const SITE = {
-  name: "Gustavo Betone",
-  title: "Gustavo Betone, Fullstack Developer",
+  name: "e0lazy",
+  title: "e0lazy, Gustavo Betone, empreendedor multi-negócios",
   description:
-    "Fullstack developer specializing in Angular, Node.js, and scalable e-commerce solutions. Available for new projects.",
+    "Empreendedor que aprende rápido e constrói em público, de e-commerce a automação, mostrando o processo real de tocar vários negócios ao mesmo tempo.",
   url: "https://gustavo-betone-dev.vercel.app",
 };

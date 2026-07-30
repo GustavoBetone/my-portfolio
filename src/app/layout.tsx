@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
@@ -7,12 +7,6 @@ import { CursorGlow } from "@/components/CursorGlow";
 import { LanguageProvider } from "@/lib/language-context";
 import { SITE } from "@/lib/config";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono-hud",
@@ -39,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0b0d",
+  themeColor: "#faf6ee",
   width: "device-width",
   initialScale: 1,
 };
@@ -50,7 +44,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${jetbrainsMono.variable} h-full antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&f[]=satoshi@400,500,700&display=swap"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <div className="grain-overlay" aria-hidden="true" />
         <LanguageProvider>

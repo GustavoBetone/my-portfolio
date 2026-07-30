@@ -1,16 +1,18 @@
 import { HeroSection } from "@/components/HeroSection";
-import { SkillsSection } from "@/components/SkillsSection";
-import { ExperienceSection } from "@/components/ExperienceSection";
-import { ProjectsSection } from "@/components/ProjectsSection";
+import { TrajetoriaSection } from "@/components/TrajetoriaSection";
+import { NegociosSection } from "@/components/NegociosSection";
+import { LazyDevSection } from "@/components/LazyDevSection";
+import { ContentSection } from "@/components/ContentSection";
 import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
   return (
     <main className="relative z-10">
       <HeroSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
+      <TrajetoriaSection />
+      <NegociosSection />
+      <LazyDevSection />
+      <ContentSection />
       <ContactSection />
     </main>
   );

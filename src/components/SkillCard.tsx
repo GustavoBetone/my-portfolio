@@ -55,9 +55,9 @@ export function SkillCard({ skill, delay = 0 }: { skill: Skill; delay?: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay }}
-      className="bg-surface border border-border-soft rounded-2xl p-7 pb-6 transition-all hover:border-accent-cyan/40 hover:-translate-y-1 hover:glow-cyan"
+      className="bg-surface border border-border-soft rounded-2xl p-7 pb-6 transition-all hover:border-signal/40 hover:-translate-y-1 hover:glow-signal"
     >
-      <div className="w-11 h-11 bg-accent-cyan-dim rounded-xl flex items-center justify-center mb-4 text-accent-cyan [&>svg]:w-[22px] [&>svg]:h-[22px]">
+      <div className="w-11 h-11 bg-signal-dim rounded-xl flex items-center justify-center mb-4 text-signal [&>svg]:w-[22px] [&>svg]:h-[22px]">
         {icons[skill.icon]}
       </div>
       <div className="font-display text-[1.0625rem] font-bold text-foreground mb-3">{skill.name[lang]}</div>
@@ -65,7 +65,7 @@ export function SkillCard({ skill, delay = 0 }: { skill: Skill; delay?: number }
         {skill.tags.map((tag, i) => (
           <span
             key={i}
-            className="text-xs font-medium text-muted bg-background border border-border-soft px-2.5 py-1 rounded-md transition-colors hover:text-accent-cyan hover:border-accent-cyan/40 hover:bg-accent-cyan-dim"
+            className="text-xs font-medium text-muted bg-background border border-border-soft px-2.5 py-1 rounded-md transition-colors hover:text-signal hover:border-signal/40 hover:bg-signal-dim"
           >
             {tagLabel(tag, lang)}
           </span>

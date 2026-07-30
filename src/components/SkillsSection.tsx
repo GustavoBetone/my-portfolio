@@ -11,7 +11,7 @@ export function SkillsSection() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
           <span className="hud-label inline-flex items-center gap-2 mb-4">
-            <span className="w-4 h-px bg-accent-cyan" />
+            <span className="w-4 h-px bg-signal" />
             {t.skills.label}
           </span>
           <h2 className="font-display text-[clamp(2rem,4vw,2.75rem)] font-bold tracking-[-0.03em] leading-[1.15] text-foreground mb-2">

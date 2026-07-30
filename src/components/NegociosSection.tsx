@@ -1,28 +1,28 @@
 "use client";
 
-import { useLanguage } from "@/lib/language-context";
-import { projects } from "@/lib/projects";
+import { negocios } from "@/lib/negocios";
 import { ProjectCard } from "./ProjectCard";
 
-export function ProjectsSection() {
-  const { t } = useLanguage();
+export function NegociosSection() {
   return (
-    <section id="work" className="py-24 px-6">
+    <section id="negocios" className="py-24 px-6 bg-background-raised/30">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
           <span className="hud-label inline-flex items-center gap-2 mb-4">
             <span className="w-4 h-px bg-signal" />
-            {t.projects.label}
+            Negócios
           </span>
           <h2 className="font-display text-[clamp(2rem,4vw,2.75rem)] font-bold tracking-[-0.03em] leading-[1.15] text-foreground mb-2">
-            {t.projects.title}
+            Negócios que eu construí
           </h2>
-          <p className="text-base text-muted max-w-[480px]">{t.projects.sub}</p>
+          <p className="text-base text-muted max-w-[520px]">
+            Não são projetos de cliente numa vitrine. São frentes reais que eu toco ao mesmo tempo, com receita e problema de verdade.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} delay={i * 0.06} />
+          {negocios.map((negocio, i) => (
+            <ProjectCard key={negocio.slug} project={negocio} delay={i * 0.06} locale="pt" />
           ))}
         </div>
       </div>

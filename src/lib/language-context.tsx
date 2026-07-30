@@ -19,11 +19,11 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): Lang {
-  return localStorage.getItem("lang") === "pt" ? "pt" : "en";
+  return localStorage.getItem("lang") === "en" ? "en" : "pt";
 }
 
 function getServerSnapshot(): Lang {
-  return "en";
+  return "pt";
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {

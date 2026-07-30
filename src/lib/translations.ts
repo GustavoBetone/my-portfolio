@@ -1,27 +1,16 @@
 export type Lang = "en" | "pt";
 
+/**
+ * Only the "Lazy Dev" section keeps an EN/PT toggle — the rest of the site
+ * (Hero, Trajetória, Negócios, Conteúdo, Contato) is PT-only, hardcoded in place.
+ */
 export const translations = {
   en: {
-    nav: {
-      skills: "Skills",
-      experience: "Experience",
-      work: "Work",
-      contact: "Contact",
-      hire: "Hire me on Upwork",
-    },
-    hero: {
-      badge: "Available for new projects",
-      titleLines: ["Fullstack dev", "that ships."],
-      sub: "I build high-performance Angular + Node.js applications, from SaaS platforms to e-commerce solutions that scale and convert.",
+    lazyDev: {
+      label: "Lazy Dev",
+      title: "The freelance side of the Lazy",
+      sub: "Fullstack engineering delivered to real clients, the technical track record behind the businesses.",
       ctaHire: "Hire me on Upwork",
-      ctaWork: "See my work",
-      ctaWhatsapp: "Message me on WhatsApp",
-      statYears: "Years exp",
-      statProducts: "Products built",
-      statUpwork: "on Upwork",
-      cardRole: "Fullstack Developer",
-      cardBadge: "Open to work",
-      hudStatus: "STATUS: AVAILABLE",
     },
     skills: {
       label: "Expertise",
@@ -34,42 +23,21 @@ export const translations = {
       sub: "Enterprise-grade engineering work, delivered under NDA and long-term commitments.",
     },
     projects: {
-      label: "Portfolio",
-      title: "Selected projects",
-      sub: "Real products shipped to real users, from zero to production.",
+      label: "Delivered work",
+      title: "Freelance & client projects",
+      sub: "Real products shipped to real clients, from zero to production.",
       visit: "Visit site",
       hudStack: "STACK",
-    },
-    contact: {
-      label: "Contact",
-      titleLines: ["Ready to build", "something great?"],
-      sub: "Available for freelance projects, contract work, and consulting. Let's talk about your next product.",
-    },
-    footer: {
-      copyright: "© 2026 Gustavo Betone. All rights reserved.",
+      statusLive: "LIVE",
+      statusArchived: "ARCHIVED",
     },
   },
   pt: {
-    nav: {
-      skills: "Skills",
-      experience: "Experiência",
-      work: "Projetos",
-      contact: "Contato",
-      hire: "Me contrate no Upwork",
-    },
-    hero: {
-      badge: "Disponível para novos projetos",
-      titleLines: ["Dev fullstack", "que entrega."],
-      sub: "Desenvolvo aplicações Angular + Node.js de alta performance, de plataformas SaaS a soluções e-commerce que escalam e convertem.",
+    lazyDev: {
+      label: "Lazy Dev",
+      title: "O lado freelance do Lazy",
+      sub: "Engenharia fullstack entregue pra clientes reais, o histórico técnico por trás dos negócios.",
       ctaHire: "Me contrate no Upwork",
-      ctaWork: "Ver projetos",
-      ctaWhatsapp: "Me chama no WhatsApp",
-      statYears: "Anos de exp",
-      statProducts: "Produtos entregues",
-      statUpwork: "no Upwork",
-      cardRole: "Desenvolvedor Fullstack",
-      cardBadge: "Disponível",
-      hudStatus: "STATUS: DISPONÍVEL",
     },
     skills: {
       label: "Especialidades",
@@ -82,19 +50,13 @@ export const translations = {
       sub: "Trabalho de engenharia em ambiente enterprise, entregue sob NDA e compromissos de longo prazo.",
     },
     projects: {
-      label: "Portfólio",
-      title: "Projetos selecionados",
-      sub: "Produtos reais entregues a usuários reais, do zero à produção.",
+      label: "Trabalho entregue",
+      title: "Projetos freelance & clientes",
+      sub: "Produtos reais entregues a clientes reais, do zero à produção.",
       visit: "Ver site",
       hudStack: "STACK",
-    },
-    contact: {
-      label: "Contato",
-      titleLines: ["Pronto para construir", "algo incrível?"],
-      sub: "Disponível para projetos freelance, contratos e consultoria. Vamos conversar sobre seu próximo produto.",
-    },
-    footer: {
-      copyright: "© 2026 Gustavo Betone. Todos os direitos reservados.",
+      statusLive: "ATIVO",
+      statusArchived: "ARQUIVADO",
     },
   },
 } satisfies Record<Lang, unknown>;
