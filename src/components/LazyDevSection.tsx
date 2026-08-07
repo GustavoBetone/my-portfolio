@@ -2,9 +2,10 @@
 
 import { useLanguage } from "@/lib/language-context";
 import { LINKS } from "@/lib/config";
+import { projects } from "@/lib/projects";
+import { ProjectCard } from "./ProjectCard";
 import { SkillsSection } from "./SkillsSection";
 import { ExperienceSection } from "./ExperienceSection";
-import { ProjectsSection } from "./ProjectsSection";
 
 export function LazyDevSection() {
   const { lang, setLang, t } = useLanguage();
@@ -52,11 +53,17 @@ export function LazyDevSection() {
             </a>
           </div>
         </div>
+
+        {/* Trabalho entregue: antes era seção própria, virou o grid de abertura do Lazy Dev */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
+          {projects.map((project, i) => (
+            <ProjectCard key={project.slug} project={project} delay={i * 0.06} />
+          ))}
+        </div>
       </div>
 
       <SkillsSection />
       <ExperienceSection />
-      <ProjectsSection />
     </section>
   );
 }

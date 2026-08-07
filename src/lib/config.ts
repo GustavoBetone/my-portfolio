@@ -13,6 +13,14 @@ export const LINKS = {
   korza: "https://korza-wine.vercel.app/",
 };
 
+/**
+ * TODO: preencher com a URL do site próprio do Lazora quando entrar no ar.
+ * Enquanto for null, a seção Serviços manda o visitante pro contato e o card
+ * em Negócios mostra "site em breve" no lugar de um link quebrado. Preencher
+ * aqui é a única mudança necessária, os dois pontos passam a apontar sozinhos.
+ */
+export const LAZORA_URL: string | null = null;
+
 export const SITE = {
   name: "e0lazy",
   title: "e0lazy, Gustavo Betone, empreendedor multi-negócios",

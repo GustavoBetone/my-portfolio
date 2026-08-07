@@ -13,7 +13,9 @@ export type Project = {
   stack: LocalizedText[];
   link:
     | { kind: "external"; href: string }
-    | { kind: "confidential"; label: LocalizedText };
+    | { kind: "confidential"; label: LocalizedText }
+    /** Produto no ar, site próprio ainda não publicado. Mostra o rótulo sem link. */
+    | { kind: "pending"; label: LocalizedText };
 };
 
 export const projects: Project[] = [

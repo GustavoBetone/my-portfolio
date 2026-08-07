@@ -1,3 +1,4 @@
+import { LAZORA_URL } from "./config";
 import type { Project } from "./projects";
 
 export const negocios: Project[] = [
@@ -60,5 +61,19 @@ export const negocios: Project[] = [
     desc: "Landing page de conversão pra abertura de vertente de atacado de uma loja com quase dois anos de histórico e mais de 20 mil avaliações na Shopee. Entrei pra estruturar essa nova frente do zero.",
     stack: ["Next.js", "Three.js", "Framer Motion", "Vercel"],
     link: { kind: "external", href: "https://gi-gi-variedades.vercel.app/" },
+  },
+  {
+    slug: "lazora",
+    status: "live",
+    image: null,
+    imageFit: "cover",
+    placeholderLabel: "LAZORA",
+    type: "IA Generativa & Food Service",
+    name: "Lazora",
+    desc: "Geração de imagem de cardápio por IA pra quem vende comida e não tem verba de estúdio. Fundei e toco sozinho: prompt, pipeline de geração e atendimento. Primeiro cliente real rodando, a CQ Sabe Lanches.",
+    stack: ["IA Generativa", "Next.js", "Cardápio Digital"],
+    link: LAZORA_URL
+      ? { kind: "external", href: LAZORA_URL }
+      : { kind: "pending", label: "Site próprio em breve" },
   },
 ];

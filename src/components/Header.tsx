@@ -5,6 +5,7 @@ import { LINKS } from "@/lib/config";
 
 const NAV_ITEMS = [
   { id: "trajetoria", label: "Trajetória" },
+  { id: "servicos", label: "Serviços" },
   { id: "negocios", label: "Negócios" },
   { id: "lazy-dev", label: "Lazy Dev" },
   { id: "conteudo", label: "Conteúdo" },

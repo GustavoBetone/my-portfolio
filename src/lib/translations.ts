@@ -23,9 +23,6 @@ export const translations = {
       sub: "Enterprise-grade engineering work, delivered under NDA and long-term commitments.",
     },
     projects: {
-      label: "Delivered work",
-      title: "Freelance & client projects",
-      sub: "Real products shipped to real clients, from zero to production.",
       visit: "Visit site",
       hudStack: "STACK",
       statusLive: "LIVE",
@@ -50,9 +47,6 @@ export const translations = {
       sub: "Trabalho de engenharia em ambiente enterprise, entregue sob NDA e compromissos de longo prazo.",
     },
     projects: {
-      label: "Trabalho entregue",
-      title: "Projetos freelance & clientes",
-      sub: "Produtos reais entregues a clientes reais, do zero à produção.",
       visit: "Ver site",
       hudStack: "STACK",
       statusLive: "ATIVO",
