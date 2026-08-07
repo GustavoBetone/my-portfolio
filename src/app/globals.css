@@ -72,22 +72,29 @@ body {
   position: relative;
   display: inline-block;
 }
+/* A barra escala com o tamanho da fonte. Fixa em 1.5px ela quase some no
+   wordmark pequeno do header em tela de celular, e o zero volta a ser lido
+   como "O" maiúsculo. O piso de 1.5px segura o traço em fontes miúdas. */
 .wordmark-zero::after {
   content: "";
   position: absolute;
-  left: 14%;
-  right: 14%;
+  left: 4%;
+  right: 4%;
   top: 52%;
-  height: 1.5px;
+  height: max(2px, 0.115em);
+  border-radius: 1px;
   background: currentColor;
-  transform: translateY(-50%) rotate(-16deg);
-  opacity: 0.9;
+  transform: translateY(-50%) rotate(-22deg);
+  opacity: 1;
 }
 
+/* line-height explícito: sem ele um rótulo que quebra em duas linhas encosta
+   na headline seguinte e perde o respiro que os rótulos de uma linha têm */
 .hud-label {
   font-family: var(--font-mono-hud), ui-monospace, monospace;
   font-size: 0.6875rem;
   font-weight: 500;
+  line-height: 1.45;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--signal-text);

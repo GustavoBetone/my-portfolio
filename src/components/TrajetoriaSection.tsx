@@ -40,8 +40,15 @@ function buildSmoothPath(points: Point[]): string {
   return d;
 }
 
-const DESKTOP = { width: 1000, centerX: 500, step: 260, amplitude: 340, marginY: 90, textGap: 44 };
-const MOBILE = { width: 320, centerX: 46, step: 260, amplitude: 16, marginY: 90, textGap: 40 };
+/**
+ * `clearance` é o respiro entre o extremo da curva e a coluna de texto, em
+ * unidades do viewBox. Ele precisa viver no mesmo espaço de coordenadas da
+ * amplitude: o SVG usa preserveAspectRatio="none", então o eixo x escala com a
+ * largura do track. Um respiro em px fixo encolhe proporcionalmente conforme a
+ * tela cresce e a curva acaba invadindo o texto nas telas maiores.
+ */
+const DESKTOP = { width: 1000, centerX: 500, step: 260, amplitude: 210, marginY: 90, clearance: 30 };
+const MOBILE = { width: 320, centerX: 46, step: 260, amplitude: 16, marginY: 90, clearance: 20 };
 
 function TrajetoriaTrack({
   config,
@@ -52,10 +59,16 @@ function TrajetoriaTrack({
   pathLength: number | ReturnType<typeof useSpring>;
   textSide: "alternate" | "right";
 }) {
-  const { width, centerX, step, amplitude, marginY, textGap } = config;
+  const { width, centerX, step, amplitude, marginY, clearance } = config;
   const height = marginY * 2 + (trajetoria.length - 1) * step;
   const points = buildPoints(trajetoria.length, centerX, step, amplitude, marginY);
   const d = buildSmoothPath(points);
+
+  const pct = (units: number) => `${(units / width) * 100}%`;
+  // A curva inteira vive entre estes dois extremos, então basta manter o texto
+  // fora deles para não haver cruzamento em largura nenhuma.
+  const curvaEsquerda = centerX - amplitude;
+  const curvaDireita = centerX + amplitude;
 
   return (
     <div className="relative w-full" style={{ height }}>
@@ -73,25 +86,33 @@ function TrajetoriaTrack({
       {trajetoria.map((milestone, i) => {
         const point = points[i];
         const alignRight = textSide === "right" ? true : point.x > width / 2;
+
+        // O posicionamento fica no wrapper simples, nunca no motion.div: o
+        // framer-motion é dono da propriedade `transform` e sobrescreve
+        // qualquer translate do autor ao encerrar a animação de entrada.
+        const box = alignRight
+          ? { left: pct(curvaDireita + clearance), right: 0 }
+          : { right: pct(width - (curvaEsquerda - clearance)), left: 0 };
+
         return (
-          <motion.div
+          <div
             key={milestone.slug}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-            className={`absolute w-[170px] sm:w-[260px] ${alignRight ? "text-left" : "text-right"}`}
-            style={{
-              left: `${(point.x / width) * 100}%`,
-              top: `${point.y}px`,
-              transform: `translate(${alignRight ? `${textGap}px` : `calc(-100% - ${textGap}px)`}, -50%)`,
-            }}
+            className="absolute"
+            style={{ ...box, top: `${point.y}px` }}
           >
-            <span className="relative inline-block w-3 h-3 rounded-full bg-signal shrink-0" />
-            <div className="hud-label mt-2 mb-1">{milestone.period}</div>
-            <div className="wordmark font-display text-base font-bold text-foreground mb-1">{milestone.title}</div>
-            <p className="text-sm text-muted leading-relaxed">{milestone.desc}</p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5 }}
+              className={alignRight ? "text-left" : "text-right"}
+            >
+              <span className="relative inline-block w-3 h-3 rounded-full bg-signal shrink-0" />
+              <div className="hud-label mt-2 mb-2">{milestone.period}</div>
+              <div className="wordmark font-display text-base font-bold text-foreground mb-1">{milestone.title}</div>
+              <p className="text-sm text-muted leading-relaxed">{milestone.desc}</p>
+            </motion.div>
+          </div>
         );
       })}
     </div>
