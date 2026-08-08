@@ -1,55 +1,115 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LINKS } from "@/lib/config";
 
-const NAV_ITEMS = [
-  { id: "trajetoria", label: "Trajetória" },
-  { id: "servicos", label: "Serviços" },
-  { id: "cases", label: "Cases" },
-  { id: "negocios", label: "Negócios" },
-  { id: "lazy-dev", label: "Lazy Dev" },
-  { id: "conteudo", label: "Conteúdo" },
-  { id: "contact", label: "Contato" },
-] as const;
+/**
+ * "rota" navega de verdade, "ancora" rola até uma seção da home.
+ *
+ * A âncora aponta sempre para "/#slug", nunca para "#slug". Fora da home o
+ * "#slug" procuraria um elemento que não existe na rota atual e o clique não
+ * faria nada. Com "/#slug" o mesmo link serve nos dois lugares: na home vira
+ * scroll, fora dela volta pra home e rola até a seção.
+ */
+type ItemNav =
+  | { id: string; label: string; tipo: "ancora" }
+  | { id: string; label: string; tipo: "rota"; href: string };
+
+const NAV_ITEMS: ItemNav[] = [
+  { id: "trajetoria", label: "Trajetória", tipo: "ancora" },
+  { id: "servicos", label: "Serviços", tipo: "ancora" },
+  { id: "cases", label: "Cases", tipo: "rota", href: "/cases" },
+  { id: "negocios", label: "Negócios", tipo: "ancora" },
+  { id: "lazy-dev", label: "Lazy Dev", tipo: "ancora" },
+  { id: "conteudo", label: "Conteúdo", tipo: "ancora" },
+  { id: "contact", label: "Contato", tipo: "ancora" },
+];
+
+const ANCORAS = NAV_ITEMS.filter((i) => i.tipo === "ancora");
 
 export function Header() {
-  const [active, setActive] = useState<string>("");
+  const pathname = usePathname();
+  const naHome = pathname === "/";
+  const [secaoVisivel, setSecaoVisivel] = useState<string>("");
 
   useEffect(() => {
+    // O scrollspy só faz sentido na home: é lá que as seções existem. Em
+    // qualquer outra rota ele procuraria ids ausentes e devolveria "" sempre.
+    if (!naHome) return;
+
     const onScroll = () => {
-      let current = "";
-      for (const item of NAV_ITEMS) {
+      let atual = "";
+      for (const item of ANCORAS) {
         const el = document.getElementById(item.id);
-        if (el && window.scrollY >= el.offsetTop - 90) current = item.id;
+        if (el && window.scrollY >= el.offsetTop - 90) atual = item.id;
       }
-      setActive(current);
+      setSecaoVisivel(atual);
     };
+
+    // Primeira medição no frame seguinte, não no corpo do efeito: quem chega
+    // em "/#servicos" vindo de /cases precisa ver o item certo destacado sem
+    // rolar nada, e esperar um frame ainda deixa o layout assentar antes de
+    // ler offsetTop.
+    const frame = requestAnimationFrame(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [naHome]);
+
+  // Derivado em vez de zerado por efeito: fora da home nenhuma âncora fica
+  // ativa, e o estado antigo do scrollspy não sobrevive à troca de rota.
+  const secaoAtiva = naHome ? secaoVisivel : "";
+
+  const estaAtivo = (item: ItemNav) =>
+    item.tipo === "rota" ? pathname === item.href : secaoAtiva === item.id;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] bg-background/85 backdrop-blur-md border-b border-border-soft">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center gap-8">
-        <a href="#hero" className="wordmark font-display font-extrabold text-xl tracking-[-0.02em] text-foreground shrink-0">
+        {/* "/#hero" e não "/": serve nos dois casos, volta pra home vindo de
+            /cases e sobe até o topo quando já se está na home. */}
+        <Link
+          href="/#hero"
+          className="wordmark font-display font-extrabold text-xl tracking-[-0.02em] text-foreground shrink-0"
+        >
           e<span className="wordmark-zero">0</span>lazy
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-7 ml-auto list-none">
           {NAV_ITEMS.map((item) => (
             <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={`text-sm font-medium transition-colors ${active === item.id ? "text-signal" : "text-muted hover:text-foreground"}`}
+              <Link
+                href={item.tipo === "rota" ? item.href : `/#${item.id}`}
+                aria-current={estaAtivo(item) ? "page" : undefined}
+                className={`text-sm font-medium transition-colors ${
+                  estaAtivo(item) ? "text-signal" : "text-muted hover:text-foreground"
+                }`}
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2.5 shrink-0 md:ml-0 ml-auto">
+          {/* No mobile o menu inteiro fica escondido, então sem este link a
+              página /cases não teria como ser alcançada pelo celular. */}
+          <Link
+            href="/cases"
+            aria-current={pathname === "/cases" ? "page" : undefined}
+            className={`md:hidden text-[13px] font-medium px-3 py-2 rounded-lg transition-colors ${
+              pathname === "/cases"
+                ? "text-signal bg-signal-dim"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            Cases
+          </Link>
+
           <a
             href={LINKS.github}
             target="_blank"
